@@ -46,9 +46,6 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: ./mvnw --batch-mode clean install
-      - uses: jwgmeligmeyling/spotbugs-github-action@master
-        with:
-          path: '**/spotbugsXml.xml'
 
   deploy:
     needs: [build]
