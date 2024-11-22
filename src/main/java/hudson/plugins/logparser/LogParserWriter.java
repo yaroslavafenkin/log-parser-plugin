@@ -50,16 +50,9 @@ public final class LogParserWriter {
             final HashMap<String, String> linkFiles,
             final List<String> extraTags) throws IOException {
 
-        final String refStart = "<script type=\"text/javascript\">\n"
-                + "\tfunction toggleList(list){\n"
-                + "\t\telement = document.getElementById(list).style;\n"
-                + "\t\telement.display == 'none' ? element.display='block' : element.display='none';\n"
-                + "\t}\n" + "</script>\n";
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(buildRefPath))) {
             // Hudson stylesheets
             writer.write(LogParserConsts.getHtmlOpeningTags());
-            writer.write(refStart); // toggle links javascript
             // Write Errors
             writeLinks(writer, LogParserConsts.ERROR, headerForSection,
                     statusCountPerSection, iconTable, linkListDisplay,
@@ -123,7 +116,7 @@ public final class LogParserWriter {
 		
         final String linksStart = "<img src=\"" + hudsonRoot + iconLocation + statusIcon
                 + "\" style=\"margin: 2px;\" width=\"24\" alt=\"" + linkListDisplayStr + " Icon\" height=\"24\" />\n"
-                + "<a href=\"javascript:toggleList('" + linkListDisplayStr + "')\" target=\"_self\"><STRONG>"
+                + "<a class=\"lpp-toggle-list\" href=\"#\" data-display-category=\"" + linkListDisplayStr + "\"><STRONG>"
                 + linkListDisplayStr + " (" + linkListCount + ")</STRONG></a><br />\n"
                 + "<ul style=\"display: none;\" id=\""
                 + linkListDisplayStr + "\" >\n";

@@ -4,7 +4,7 @@
   <j:set var="parseSucceeded" value="${it.result.failedToParseError == null}"/>
   <j:set var="parseFailed" value="${it.result.failedToParseError != null}"/>
   <j:set var="badParseRules" value="${it.result.badParsingRulesError != null}"/>
-  <l:layout>
+  <l:layout title="Parsed Console Output">
     <st:include it="${it.owner}" page="sidepanel.jelly"/>
     <l:main-panel>
       <j:if test="${parseSucceeded}">

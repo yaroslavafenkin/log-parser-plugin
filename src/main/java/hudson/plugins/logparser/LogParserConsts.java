@@ -1,5 +1,6 @@
 package hudson.plugins.logparser;
 
+import hudson.Functions;
 import jenkins.model.Jenkins;
 
 import java.util.Arrays;
@@ -25,12 +26,12 @@ public class LogParserConsts {
 
     public static String getHtmlOpeningTags() {
         final String hudsonRoot = Jenkins.get().getRootUrl();
+        final String pluginResourceUrl = String.format("%s/plugin/log-parser/", Jenkins.RESOURCE_PATH).substring(1);
+
         return "<!DOCTYPE html>\n" + "<html>\n" + "\t<head>\n"
                 + "\t\t<title>log-parser plugin page</title>\n"
-                + "\t\t<link type=\"text/css\" rel=\"stylesheet\" href=\""
-                + hudsonRoot + "css/style.css\" />\n"
-                + "\t\t<link type=\"text/css\" rel=\"stylesheet\" href=\""
-                + hudsonRoot + "css/color.css\" />\n" + "\t</head>\n"
+                + "\t\t<script type=\"application/javascript\" src=\"" + hudsonRoot + pluginResourceUrl + "js/log-parser-behaviour.js\"></script>\n"
+                +"\t</head>\n"
                 + "\t<body>\n";
     }
 
